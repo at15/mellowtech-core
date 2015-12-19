@@ -2,3 +2,4 @@
 core.iml
 .DS_Store
 target
+*.idx
