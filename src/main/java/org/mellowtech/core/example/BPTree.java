@@ -86,18 +86,25 @@ public class BPTree {
 //        bt.save();
         System.out.println(bt.get(new CBInt(1)));
         System.out.println(bt.get(new CBInt(2)));
+        System.out.println(bt.get(new CBInt(3)));
+//        System.out.println(bt.getKey(0));
         // FIXME: isEmpty always return true ...
-        System.out.println(bt.isEmpty());
+        System.out.println(bt.isEmpty()); // the tree is not saved, so it's true
+        System.out.println(bt.toString());
     }
 
-    public static void tmp() throws Exception{
-        BTree bt = new BTreeBuilder().valuesInMemory(true)
-                .build(new CBInt(), new CBString(), "/tmp/tree-index/L3VzZXIvYXQxNS90cmVlLWluZGV4L291dC1zb3J0L3BhcnQtci0wMDAwMA==.idx");
+    public static void tmp() throws Exception {
+        BTree bt = new BTreeBuilder()
+                // NOTE: do NOT pass the .idx
+                .build(new CBInt(), new CBString(), "/tmp/tree-index/L3VzZXIvYXQxNS90cmVlLWluZGV4L291dC1zb3J0L3BhcnQtci0wMDAwMA==");
+//                .build(new CBInt(), new CBString(), "/tmp/tree-index/a.idx");
+//        System.out.println(bt.get(new CBInt(100)));
+//        System.out.println(bt.get(new CBInt(300)));
         System.out.println(bt.get(new CBInt(1)));
-        System.out.println(bt.get(new CBInt(100)));
-        System.out.println(bt.get(new CBInt(300)));
-        System.out.println(bt.get(new CBInt(427)));
-        System.out.println(bt.isEmpty());
+//        System.out.println(bt.getKey(0));
+
+        System.out.println(bt.isEmpty()); // it's false now, when open the write file
+//        System.out.println(bt.toString());
     }
 
     public static void main(String[] args) throws Exception {
