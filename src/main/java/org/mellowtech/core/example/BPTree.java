@@ -64,7 +64,8 @@ public class BPTree {
                 }
             }
             // parse the line and return value
-            String[] splits = line.split(",");
+//            String[] splits = line.split(",");
+            String[] splits = line.split("\\t");
             return new KeyValue<>(new CBInt(Integer.valueOf(splits[0])),
                     new CBString(line));
         }
@@ -74,14 +75,33 @@ public class BPTree {
         }
     }
 
-    public static void main(String[] args) throws Exception {
+
+    public static void local() throws Exception {
         BTree bt = new BTreeBuilder().valuesInMemory(true)
                 .build(new CBInt(), new CBString(), "test-bp");
 
-//        BufferedReader br = new BufferedReader(new FileReader("data/sub-data.txt"));
+//        BufferedReader br = new BufferedReader(new FileReader("data/part-r-00000.txt"));
 //        SortedFileIterator iterator = new SortedFileIterator(br);
 //        bt.createIndex(iterator);
 //        bt.save();
         System.out.println(bt.get(new CBInt(1)));
+        System.out.println(bt.get(new CBInt(2)));
+        // FIXME: isEmpty always return true ...
+        System.out.println(bt.isEmpty());
+    }
+
+    public static void tmp() throws Exception{
+        BTree bt = new BTreeBuilder().valuesInMemory(true)
+                .build(new CBInt(), new CBString(), "/tmp/tree-index/L3VzZXIvYXQxNS90cmVlLWluZGV4L291dC1zb3J0L3BhcnQtci0wMDAwMA==.idx");
+        System.out.println(bt.get(new CBInt(1)));
+        System.out.println(bt.get(new CBInt(100)));
+        System.out.println(bt.get(new CBInt(300)));
+        System.out.println(bt.get(new CBInt(427)));
+        System.out.println(bt.isEmpty());
+    }
+
+    public static void main(String[] args) throws Exception {
+        local();
+        tmp();
     }
 }
