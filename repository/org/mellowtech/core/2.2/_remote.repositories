@@ -1,0 +1,6 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Sun Dec 20 00:09:52 CST 2015
+core-2.2-javadoc.jar>=
+core-2.2.pom>=
+core-2.2-sources.jar>=
+core-2.2.jar>=
